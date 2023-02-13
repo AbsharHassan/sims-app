@@ -1,0 +1,30 @@
+# Use an official PHP image as the base image
+FROM php:8-fpm
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    libzip-dev \
+    unzip \
+    git \
+    libpq-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev
+
+# Configure and install PHP extensions
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install -j$(nproc) gd mysqli pdo pdo_mysql zip opcache
+
+# Copy application code
+COPY . /app
+
+# Set permissions for user
+RUN chown -R www-data:www-data /app
+
+# Define the command to run when starting the container
+CMD ["php-fpm"]
