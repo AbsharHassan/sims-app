@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="overflow-x-clip">
+        <div class="overflow-x-clip h-[100vh]">
             <router-view v-slot="{ Component, route }">
                 <transition :name="route.meta.transitionName" mode="out-in">
                     <component :is="Component" />
@@ -36,7 +36,12 @@ export default {
         ...mapActions(["getAfterLoginPath"]),
     },
     computed: {
-        ...mapGetters(["flashMessage", "showConfirmationBox", "showLogoutBox"]),
+        ...mapGetters([
+            "flashMessage",
+            "showConfirmationBox",
+            "showLogoutBox",
+            "getRefresh",
+        ]),
     },
     created() {
         sessionStorage.setItem("SHOW-NAV-TEXT", true);

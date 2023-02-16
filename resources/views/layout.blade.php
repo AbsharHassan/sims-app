@@ -10,7 +10,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"/> --}}
     <link rel="stylesheet" href="/css/style.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <title>Main Page</title>
+    <title>Student Management App</title>
 </head>
 <body>
     <div id="app">

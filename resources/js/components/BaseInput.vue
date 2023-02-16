@@ -1,19 +1,28 @@
 <template>
-    <label class="inline-block mb-1 font-medium" :class="noWrapProp ? 'whitespace-nowrap' : ''">
+    <label
+        class="inline-block mb-1 font-medium"
+        :class="noWrapProp ? 'whitespace-nowrap' : ''"
+    >
         {{ name }}
         <slot></slot>
     </label>
-    <input v-bind="$attrs" class="input-bg border border-slate-300 rounded p-2 w-full focus:outline-none focus:border-2 focus:border-cyan-700 transition duration-1000" :class="errorChecker(objKey) ? 'border-red-600' : ''" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)"/>
+    <input
+        v-bind="$attrs"
+        class="input-bg border border-slate-300 rounded p-2 w-full focus:outline-0 focus:border-2 focus:border-cyan-700 transition duration-1000"
+        :class="errorChecker(objKey) ? 'border-red-600' : ''"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
+    />
     <div v-if="allErrors[objKey]" class="text-sm text-red-600 sm:mb-2">
-            {{ allErrors[objKey].replace(needsReplace, replacer) }}
+        {{ allErrors[objKey].replace(needsReplace, replacer) }}
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
-    name: 'BaseInput',
+    name: "BaseInput",
     model: {
         prop: String,
         event: String,
@@ -25,21 +34,19 @@ export default {
         replacer: String,
         noWrapProp: {
             type: Boolean,
-            default: false
+            default: false,
         },
         modelValue: [String, Number, File],
     },
     computed: {
-        ...mapGetters(['allErrors']),
+        ...mapGetters(["allErrors"]),
     },
     methods: {
         errorChecker(fieldName) {
-            return (this.allErrors.hasOwnProperty(fieldName))
+            return this.allErrors.hasOwnProperty(fieldName);
         },
-    }
-}
+    },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

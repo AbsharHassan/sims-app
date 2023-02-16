@@ -295,15 +295,15 @@ class UserController extends Controller
         
         // dd($request['email']);
  
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
+        // $status = Password::sendResetLink(
+        //     $request->only('email')
+        // );
         
 
-        // dd($status);
+        // // dd($status);
 
-        return $status === Password::RESET_LINK_SENT
-                    ? ['status' => __($status)]
-                    : ['email' => __($status)];
+        // return $status === Password::RESET_LINK_SENT
+        //             ? ['status' => __($status)]
+        //             : ['email' => __($status)];
     }
 }

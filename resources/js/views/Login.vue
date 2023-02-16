@@ -1,11 +1,11 @@
 <template>
-    <div class="sm:overflow-hidden">
+    <div class="sm:overflow-hidden h-full flex items-center justify-center">
         <div>
             <header class="max-w-lg mx-auto px-2 md:px-0">
                 <h1
                     class="text-xl sm:text-3xl text-center mx-auto mt-16 sm:mt-10 pb-1 md:text-3xl font-bold"
                 >
-                    pleaseeeeee help
+                    Student Information Management System
                 </h1>
             </header>
             <main

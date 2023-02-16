@@ -2,18 +2,23 @@ version: "3.8"
 
 services:
     app:
-        container_name: laravel-app
+        container_name: laravel_app
         build: .
         ports:
             - 8000:8000
         volumes:
-            - .:/app
+            - .:/var/www/html
+            - /var/www/html/node_modules
+            - /var/www/html/vendor
+        depends_on:
+            - db
 
     # composer:
     #     container_name: composer
     #     image: composer:latest
     #     depends_on:
     #         - app
+
     #     volumes:
     #         - .:/app
     #     command: ["composer", "update"]
